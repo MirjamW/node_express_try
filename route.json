@@ -1,0 +1,12 @@
+{
+  "Startseite": {
+    "method": "GET",
+    "url": "/",
+    "controller": "index"
+  },
+  "Test Page": {
+    "method": "GET",
+    "url": "/test",
+    "controller": "index"
+  }
+}
