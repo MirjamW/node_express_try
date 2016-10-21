@@ -11,7 +11,6 @@
 5. Try run `node app/build/server.js`
 
 ## Usage
-
 * Run the application `node app/build/server.js`
 
 ## To-do
