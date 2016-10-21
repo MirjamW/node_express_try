@@ -29,9 +29,19 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+typings
 
 # Optional npm cache directory
 .npm
 
 # Optional REPL history
 .node_repl_history
+
+# Typescript compiles
+app/build
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
