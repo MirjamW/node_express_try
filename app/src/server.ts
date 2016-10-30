@@ -88,6 +88,6 @@ for (var route in routes) {
 }
 
 // Error 404 page not found
-app.get('*', function(req, res) {
-	res.json({ statuscode: 404 });
+app.all('*', function(req, res) {
+	res.status(404).json();
 });
