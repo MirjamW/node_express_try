@@ -2,17 +2,25 @@
 
 /*
  * Use express framework as wrapper of application
- * Import package.json configuration variables as constant (global)
+ * Import all requirements
  */
 var express = require('express');
 var app = express();
 const packageConfig = require('../../package.json').config;
 
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+
 /*
  * Use morgan logger to log http access into console
  */
-var morgan = require('morgan');
 app.use(morgan('tiny'));
+
+/*
+ * Parse body of json request for routes in utf-8
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /*
  * Handel uncaught exception as awesome console output

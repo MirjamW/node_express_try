@@ -19,5 +19,11 @@
   "controller": "NameOfCreatedController"
 },`
 
+## General notes
+
+* Get a GET parameter value by using `req.params`
+  * example: requested url `http://127.0.0.1/test/123`; route `/test/:id`; get value by `req.params.id`
+* Get JSON payload of a request by using `req.body`
+
 ## To-do
 * Define MVC structure
