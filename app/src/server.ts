@@ -53,34 +53,33 @@ app.listen(config.webserver.port, function() {
 });
 
 /*
- * Define routes via express.js
- * Route definitions outsources to configure in route.js
+ * Define routes via express.js; start with constructor of controller
+ * Route definitions outsources to configure in config/route.json
  */
-
 const routes = require('../../config/route.json');
+var controller: any;
+
 for (var route in routes) {
+	controller = require('./controller/' + routes[route]['controller'] + '.js');
+
 	if (routes[route]['method'] == 'GET') {
-		app.get(routes[route]['url'], function(req, res) {
-			res.json({ statuscode: 200 });
-			res.end();
+		app.get(routes[route]['url'], function(res, req) {
+			new controller[routes[route]['controller']](res, req);
 		});
 	}
 	else if (routes[route]['method'] == 'PUT') {
-		app.put(routes[route]['url'], function(req, res) {
-			res.json({ statuscode: 200 });
-			res.end();
+		app.put(routes[route]['url'], function(res, req) {
+			new controller[routes[route]['controller']](res, req);
 		});
 	}
 	else if (routes[route]['method'] == 'POST') {
-		app.post(routes[route]['url'], function(req, res) {
-			res.json({ statuscode: 200 });
-			res.end();
+		app.post(routes[route]['url'], function(res, req) {
+			new controller[routes[route]['controller']](res, req);
 		});
 	}
 	else if (routes[route]['method'] == 'DELETE') {
-		app.delete(routes[route]['url'], function(req, res) {
-			res.json({ statuscode: 200 });
-			res.end();
+		app.delete(routes[route]['url'], function(res, req) {
+			new controller[routes[route]['controller']](res, req);
 		});
 	}
 	else {
