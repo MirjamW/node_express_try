@@ -22,8 +22,10 @@
 ## General notes
 
 * Get a GET parameter value by using `req.params`
-  * example: requested url `http://127.0.0.1/test/123`; route `/test/:id`; get value by `req.params.id`
+  * example: requested url `http://127.0.0.1:8000/test/123`; route `/test/:id`; get value by `req.params.id`
 * Get JSON payload of a request by using `req.body`
+* Files in public/ will be delivered directly
+  * example: public/cat.gif is able to be requested by `http://127.0.0.1:8000/cat.gif` 
 
 ## To-do
 * Define MVC structure

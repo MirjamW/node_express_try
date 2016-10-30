@@ -6,6 +6,7 @@
  */
 var express = require('express');
 var app = express();
+var path = require('path');
 const packageConfig = require('../../package.json').config;
 
 var bodyParser = require('body-parser');
@@ -21,6 +22,11 @@ app.use(morgan('tiny'));
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+/*
+ * Deliver static files from public/
+ */
+app.use(express.static('public'));
 
 /*
  * Handel uncaught exception as awesome console output
