@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "author": "",
   "main": "app/build/server.js",
-  "config": {
-    "port": 8000
-  },
   "scripts": {},
   "dependencies": {
     "body-parser": "^1.15.2",

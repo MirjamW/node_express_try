@@ -7,7 +7,9 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-const packageConfig = require('../../package.json').config;
+
+var config: any = {};
+config.webserver = require('../../config/webserver.json');
 
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -34,7 +36,7 @@ app.use(express.static('public'));
 process.on('uncaughtException', function(err) {
 	// Ensure port for webserver is avalible
 	if (err.errno === 'EADDRINUSE') {
-		console.log('Sorry, cannot start web server. Port ' + packageConfig.port + ' is already in use.');
+		console.log('Sorry, cannot start web server. Port ' + config.webserver.port + ' is already in use.');
 	}
 	else {
 		console.log(err);
@@ -46,8 +48,8 @@ process.on('uncaughtException', function(err) {
 /*
  * Start webserver at port from package.json
  */
-app.listen(packageConfig.port, function() {
-	console.log('Webserver runs at port http://127.0.0.1:' + packageConfig.port);
+app.listen(config.webserver.port, function() {
+	console.log('Webserver runs at port http://127.0.0.1:' + config.webserver.port);
 });
 
 /*
@@ -55,7 +57,7 @@ app.listen(packageConfig.port, function() {
  * Route definitions outsources to configure in route.js
  */
 
-const routes = require('../../route.json');
+const routes = require('../../config/route.json');
 for (var route in routes) {
 	if (routes[route]['method'] == 'GET') {
 		app.get(routes[route]['url'], function(req, res) {
