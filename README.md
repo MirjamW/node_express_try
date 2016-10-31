@@ -9,7 +9,7 @@
 2. Install node dependencies `npm install`
 3. Install typescript dependencies `tsd install`
 4. Build JavaScript from Typescript first time `tsc -w`
-5. Try run `node app/build/server.js`
+5. Try run `nodemon app/build/server.js`
 
 ## Usage
 * Run the application `node app/build/server.js`
