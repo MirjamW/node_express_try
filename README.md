@@ -29,7 +29,5 @@
   * example: public/cat.gif is able to be requested by `http://127.0.0.1:8000/cat.gif`
 
 ## To-do
-* Implement models and views
 * Route and mvc creator script
-* Database objects for SQLite and MySQL
 * Express session handling

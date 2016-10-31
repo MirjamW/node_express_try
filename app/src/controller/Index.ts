@@ -3,10 +3,15 @@
 import { Controller } from "../core/Controller.js";
 
 export class Index extends Controller {
-	constructor(req, res) {
-		super();
+	// private db: any = Database;
+	// private model: Model;
+	// private view: View;
 
-		res.json({ text: "Hello World!" });
+	constructor(req, res) {
+		super(req, res);
+
+		// Send example hello world output
+		this.view.sampleOutput(req, res);
 		res.end();
 	}
 }
