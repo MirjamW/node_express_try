@@ -10,6 +10,7 @@ config.session = require('../../config/session.json');
 
 var express = require('express');
 var session = require('express-session');
+var sessionFileStore = require('session-file-store')(session);
 var path = require('path');
 var anyDB = require('any-db');
 var bodyParser = require('body-parser');
@@ -23,7 +24,11 @@ var app = express();
 app.use(session({
 	secret: config.session.secret,
 	resave: config.session.resave,
-	saveUninitialized: config.session.saveUninitialized
+	saveUninitialized: config.session.saveUninitialized,
+	cookie: {
+		maxAge: config.session.cookie.maxAge
+	},
+	store: new sessionFileStore({logFn: function(){}})
 }));
 
 /*

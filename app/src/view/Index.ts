@@ -8,11 +8,11 @@ export class Index extends View {
 	}
 
 	public sampleOutput(req, res) {
-    if (req.session.name != undefined) {
-      res.json({ text: "Hello " + req.session.name + "!" });
-    }
-    else {
-        res.json({ text: "Hello World!" });
-    }
+		if (req.session.name != undefined) {
+			res.json({ text: "Hello " + req.session.name + "!" });
+		}
+		else {
+			res.json({ text: "Hello World!" });
+		}
 	}
 }

@@ -2,6 +2,7 @@
 * node.js LTS 4.6.0
 * typescript (`npm install typescript -g`)
 * tsd (`npm install tsd -g`)
+* nodemon (`npm install -g nodemon`)
 
 ## Installation
 1. Navigate to root of project
