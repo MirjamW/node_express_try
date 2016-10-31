@@ -1,8 +1,12 @@
 "use strict";
 
-export class Index {
+import { Controller } from "../core/Controller.js";
+
+export class Index extends Controller {
 	constructor(req, res) {
-		res.json({ statuscode: 201 });
+		super();
+
+		res.json({ text: "Hello World!" });
 		res.end();
 	}
 }

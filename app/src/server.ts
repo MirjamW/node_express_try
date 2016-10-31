@@ -34,11 +34,13 @@ var dbErrorHandling = function(err) {
 };
 
 if (config.database.driver == 'sqlite3') {
-		var db = anyDB.createConnection(config.database.driver + '://' + config.database.username + ':' + config.database.password + '@' + config.database.database + '.sqlite', dbErrorHandling);
+	var db = anyDB.createConnection(config.database.driver + '://' + config.database.username + ':' + config.database.password + '@' + config.database.database + '.sqlite', dbErrorHandling);
 }
 else {
 	var db = anyDB.createConnection(config.database.driver + '://' + config.database.username + ':' + config.database.password + '@' + config.database.hostname + '/' + config.database.database, dbErrorHandling);
 }
+
+export { db as Database };
 delete config.database;
 
 /*
