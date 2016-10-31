@@ -1,20 +1,30 @@
 "use strict";
 
 /*
- * Use express framework as wrapper of application
  * Import all requirements
  */
-var express = require('express');
-var app = express();
-var path = require('path');
-var anyDB = require('any-db');
-
 var config: any = {};
 config.webserver = require('../../config/webserver.json');
 config.database = require('../../config/database.json');
+config.session = require('../../config/session.json');
 
+var express = require('express');
+var session = require('express-session');
+var path = require('path');
+var anyDB = require('any-db');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+
+/*
+ * Use express framework as wrapper of application
+ * Add express-session for session handling
+ */
+var app = express();
+app.use(session({
+	secret: config.session.secret,
+	resave: config.session.resave,
+	saveUninitialized: config.session.saveUninitialized
+}));
 
 /*
  * Use morgan logger to log http access into console

@@ -27,7 +27,7 @@
 * Get JSON payload of a request by using `req.body`
 * Files in public/ will be delivered directly
   * example: public/cat.gif is able to be requested by `http://127.0.0.1:8000/cat.gif`
+* Use session as variable `req.session`
 
 ## To-do
 * Route and mvc creator script
-* Express session handling
