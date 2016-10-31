@@ -1,0 +1,7 @@
+{
+  "driver": "sqlite3",
+  "username": "",
+  "password": "",
+  "hostname": "localhost",
+  "database": "database"
+}

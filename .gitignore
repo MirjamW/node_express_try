@@ -45,3 +45,6 @@ app/build
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Framework files
+database.sqlite

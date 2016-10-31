@@ -7,9 +7,11 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var anyDB = require('any-db');
 
 var config: any = {};
 config.webserver = require('../../config/webserver.json');
+config.database = require('../../config/database.json');
 
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -18,6 +20,26 @@ var morgan = require('morgan');
  * Use morgan logger to log http access into console
  */
 app.use(morgan('tiny'));
+
+/*
+ * Esablishe database connection (Sqlite3 or MySQL)
+ */
+var dbErrorHandling = function(err) {
+	if (err != null) {
+		console.log('Sorry, cannot establish database connection. Please check your database server or database configuration.');
+		console.log(err);
+
+		process.exit(1);
+	}
+};
+
+if (config.database.driver == 'sqlite3') {
+		var db = anyDB.createConnection(config.database.driver + '://' + config.database.username + ':' + config.database.password + '@' + config.database.database + '.sqlite', dbErrorHandling);
+}
+else {
+	var db = anyDB.createConnection(config.database.driver + '://' + config.database.username + ':' + config.database.password + '@' + config.database.hostname + '/' + config.database.database, dbErrorHandling);
+}
+delete config.database;
 
 /*
  * Parse body of json request for routes in utf-8

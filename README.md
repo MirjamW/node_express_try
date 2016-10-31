@@ -18,6 +18,7 @@
   "url": "/:parameterName",
   "controller": "NameOfCreatedController"
 },`
+* AnyDB database object for SQLite3 and MySQL usage see https://github.com/grncdr/node-any-db
 
 ## General notes
 
