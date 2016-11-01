@@ -34,4 +34,3 @@
 * createRoute: Create a new route with MVC template `node utility/createRoute.js`
 
 ## To-do
-* Route and mvc creator script
