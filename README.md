@@ -30,5 +30,8 @@
   * example: public/cat.gif is able to be requested by `http://127.0.0.1:8000/cat.gif`
 * Use session as variable `req.session`
 
+## Utilities
+* createRoute: Create a new route with MVC template `node utility/createRoute.js`
+
 ## To-do
 * Route and mvc creator script
