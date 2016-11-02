@@ -41,7 +41,7 @@ Framework for REST-API in Node.js (written in TypeScript)
 * Files in public/ will be delivered directly
   * example: public/cat.gif is able to be requested by `http://127.0.0.1:8000/cat.gif`
 * Use session as variable `req.session`
-* * AnyDB database object for SQLite3 and MySQL usage see https://github.com/grncdr/node-any-db
+* AnyDB database object for SQLite3 and MySQL usage see https://github.com/grncdr/node-any-db
 
 ## Utilities
 * createRoute: Create a new route with MVC template `node utility/createRoute.js`
