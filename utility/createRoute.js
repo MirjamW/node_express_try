@@ -31,6 +31,9 @@ function createRoute(humanableName, method, url, controller) {
 
 import { Controller } from "../core/Controller.js";
 
+/**
+ * ` + controller + ` controller
+ */
 export class ` + controller + ` extends Controller {
   // private db: any = Database;
 	// private model: Model;
@@ -48,6 +51,9 @@ export class ` + controller + ` extends Controller {
 
 import { Model } from "../core/Model.js";
 
+/**
+ * ` + controller + ` model
+ */
 export class ` + controller + ` extends Model {
   // private db: any = Database;
 }
@@ -58,6 +64,9 @@ export class ` + controller + ` extends Model {
 
 import { View } from "../core/View.js";
 
+/**
+ * ` + controller + ` view
+ */
 export class ` + controller + ` extends View {
   constructor(req, res) {
   	super(req, res);
