@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * Utility: createRoute
+ * Create a new route with MVC template
+ * @author jankarres
+ */
 
 /*
  * Import required packages
@@ -76,6 +81,7 @@ export class ` + controller + ` extends View {
   fs.writeFileSync('app/src/view/' + controller + '.ts', viewContent);
 
   console.log("\n\nRoute successfull created.\n");
+  console.log("Please compile TypeScript code with your editor or 'tsc -w'\n");
   process.exit(1);
 }
 
