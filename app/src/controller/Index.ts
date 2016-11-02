@@ -2,6 +2,9 @@
 
 import { Controller } from "../core/Controller.js";
 
+/**
+ * Index controller: Hello world example
+ */
 export class Index extends Controller {
 	// private db: any = Database;
 	// private model: Model;
@@ -10,20 +13,10 @@ export class Index extends Controller {
 	constructor(req, res) {
 		super(req, res);
 
-		/*
-		 * Set example name, if not set on secound request
-		 * >> first request response: { "text": "Hello World!" }
-		 * >> second request response: { "text": "Hello Franz!" }
-		 */
-		if (req.session.firstRequest) {
-			req.session.name = 'Franz';
-		}
-		else {
-			req.session.firstRequest = true;
-		}
-
-		// Send example hello world output
+		// Send example "Hello, World!" output
 		this.view.sampleOutput(req, res);
+
+		// End of responss; send to client
 		res.end();
 	}
 }

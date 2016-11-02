@@ -1,12 +1,17 @@
 "use strict";
+/**
+ * Server main files: start point of webserver
+ * @author jankarres
+ */
 
 /*
- * Import all requirements
+ * Import requirements and config files
  */
 var config: any = {};
 config.webserver = require('../../config/webserver.json');
 config.database = require('../../config/database.json');
 config.session = require('../../config/session.json');
+config.route = require('../../config/route.json');
 
 var express = require('express');
 var session = require('express-session');
@@ -17,8 +22,8 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 /*
- * Use express framework as wrapper of application
- * Add express-session for session handling
+ * Use express framework for webserver
+ * 	Add package express-session for session handling; store session files in session/
  */
 var app = express();
 app.use(session({
@@ -28,16 +33,17 @@ app.use(session({
 	cookie: {
 		maxAge: config.session.cookie.maxAge
 	},
-	store: new sessionFileStore({logFn: function(){}})
+	store: new sessionFileStore({ logFn: function() { } })
 }));
 
 /*
- * Use morgan logger to log http access into console
+ * Use morgan as logger to log http access into console
  */
 app.use(morgan('tiny'));
 
 /*
- * Esablishe database connection (Sqlite3 or MySQL)
+ * Use any-db as abstraction layer for database access
+ * Esablishe database connection: Sqlite3 or MySQL
  */
 var dbErrorHandling = function(err) {
 	if (err != null) {
@@ -59,7 +65,8 @@ export { db as Database };
 delete config.database;
 
 /*
- * Parse body of json request for routes in utf-8
+ * Use bodyParser as http body parser for all routes
+ * Parse json content in reqest in charset utf-8
  */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -70,7 +77,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 /*
- * Handel uncaught exception as awesome console output
+ * Handel uncaught exception for used port as awesome console output
  */
 process.on('uncaughtException', function(err) {
 	// Ensure port for webserver is avalible
@@ -85,17 +92,17 @@ process.on('uncaughtException', function(err) {
 });
 
 /*
- * Start webserver at port from package.json
+ * Start express webserver at port from config
  */
 app.listen(config.webserver.port, function() {
 	console.log('Webserver runs at port http://127.0.0.1:' + config.webserver.port);
 });
 
 /*
- * Define routes via express.js; start with constructor of controller
- * Route definitions outsources to configure in config/route.json
+ * Define express routes; start with MVC model controller constructor
+ * Route definitions outsourced in config/route.json
  */
-const routes = require('../../config/route.json');
+var routes = config.route;
 var controller: any;
 
 for (var route in routes) {
@@ -127,7 +134,7 @@ for (var route in routes) {
 	}
 }
 
-// Error 404 page not found
+// Error 404 (page not found) route for all type of requests
 app.all('*', function(req, res) {
 	res.status(404).json();
 });
